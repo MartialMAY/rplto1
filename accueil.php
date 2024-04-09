@@ -6,7 +6,9 @@ if($_SESSION['user_email']==""){
 }
 
 include ('classDocMat.php');
+
 include_once('conn/connection.php');
+include ('mail.php');
 $sql = "SELECT * FROM Materiel";
 
 try{
@@ -959,10 +961,22 @@ table th {
                                                 <input type="text" name="Descrip" value="<?php echo  $row['Descrip']; ?>"><br>
 
                                                 <label for="date_creat" style="color: black">Date de création :</label>
-                                                <input type="date" name="date_creat" value="<?php echo  $row['date_creat']; ?>"><br>
-                                                
+                                                <input
+                                                      id="party"
+                                                      type="datetime-local"
+                                                      
+                                                       name="date_creat" value="<?php echo  $row['date_creat']; ?>"/>
+                                                <br>
                                                 <label for="date_exp" style="color: black">Date d'expiration :</label>
-                                                <input type="date" name="date_exp" value="<?php echo  $row['date_exp']; ?>"><br>
+                                                <input
+                                                      id="party"
+                                                      type="datetime-local"
+                                                      
+                                                       name="date_exp" value="<?php echo  $row['date_exp']; ?>"/>
+                                                <br>
+                                                
+                                                
+                                                
                                                 <a href="modifier_materiel.php?id=<?= $row['ID'] ?>">Confirmer la modification</a>
                                             <button type="submit" name="btn-update">Confirmer la modification</button>
                                             <button type="button" onclick="document.getElementById('confirmModifyModal').style.display='none'">Annuler</button>
@@ -1101,10 +1115,10 @@ table th {
                             <input type="text" placeholder="Description du materiel" name="Description_mat" />
 
                             <label for="">Date de creation </label>
-                            <input type="date" placeholder="" name="date_creation" />
+                            <input type="datetime-local" placeholder="" name="date_creation" />
 
                             <label for="">Date d'expiration </label>
-                            <input type="date" placeholder="" name="date_exp" />
+                            <input type="datetime-local" placeholder="" name="date_exp" />
 
                            
 

@@ -23,7 +23,7 @@ if (isset($_POST['login'])) {
     if ($count > 0) {
         
         $_SESSION['user_email'] = $username;
-        header('location:dashboard.php');
+        header('location:accueil.php');
        
     } else {
         $_SESSION['invalid_details'] = "Combinaison NOM D'UTILISATEUR/MOT DE PASSE INVALIDE !";
