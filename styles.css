@@ -1,0 +1,146 @@
+*, :after, :before {
+    box-sizing: border-box;
+} 
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
+
+body{
+height: auto;
+margin: 0 auto;
+background: #04181E;
+font-family: 'Oswald', sans-serif;
+}
+
+
+.container{
+width: 100%;
+max-width: 100%;
+
+display: flex;
+flex-direction: column;
+background: #04181E;
+
+}
+
+.form1 {
+background: #08232f;
+width: 100%;
+max-width: 100%;
+height: 100px;
+
+
+}
+.form1 .deconnexion {
+display: flex;
+align-items: center;
+justify-content: right;
+background: #08232f;
+
+
+width: 100%;
+max-width: 100%;
+   height: 100px;
+}
+.form1 .deconnexion p{
+
+color: #fff;
+margin: 40px;
+
+
+}
+.form1 .deconnexion p span{
+font-weight: bold;
+margin-right: 10px;
+
+}
+.form1 .deconnexion p a{
+
+text-decoration: none;
+color: #fff;
+margin-left: 10px;
+}
+.form1 .deconnexion p a:hover{
+
+text-decoration: underline;
+}
+
+.form2-3{
+display: flex;
+justify-content: center;
+
+}
+.form2 {
+
+
+background: #04181E;
+width: 300px;
+
+   height: 700px;
+}
+.form4 {
+
+
+background: #04181E;
+width: 100%;
+max-width: 100%;
+   height: 100px;
+
+  
+}
+
+.form3 {
+background: #fff;
+
+width: 80%;
+max-width: 100%;
+   height: 700px;
+display: flex;
+justify-content: center;
+align-items: center;
+align-items: center;
+}
+
+
+
+
+
+
+div ul li p {
+background: #FFFDFA;
+}
+
+.form-connect {
+height: 100vh;
+
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.form-connect form{
+display: flex;
+align-items: center;
+
+flex-direction: column;
+
+background: #fff;
+padding: 50px;
+border-radius: 30px;
+
+}
+.form-connect form .id{
+display: flex;
+margin: 20px 0;
+flex-direction: column;
+}
+.form-connect form .mdp{
+display: flex;
+margin-bottom: 20px;
+flex-direction: column;
+}
+
+.erreur p{
+margin-top: 25px;
+color: red;
+font-size: 15px;
+text-align: center;
+}
