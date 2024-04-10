@@ -8,12 +8,14 @@
     </head>
     <?php
      include ('classDocMat.php'); 
-        // include ('model/mat.php');
-        if(isset($_GET['id'])){
+        // include ('model/mat.php'); 
+        $supmat1= new Materiel();
+        if(isset($_POST['btn-del']))
+        { 
            
         session_start();
-        $id = $_GET['id'];
-        $supmat1= new Materiel();
+        $id = $_POST['id'];
+       
         $supmat1->delete($id);
         header('location:accueil.php');
 

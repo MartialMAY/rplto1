@@ -35,22 +35,26 @@ $mail->addAddress('lauthentiquemay@gmail.com', 'Destinataire');
   
     foreach ($documents as $document) {
         $mail->Subject = 'Rappel de date d\'expiration';
-        $mail->Body = 'La date d\'expiration du document ' . $document['Reference'] . ' est proche ou dépassée.';
+        $mail->Body = 'La date d\'expiration du document ' . $document['Reference'] . ' est proche ou dépassée. ';
         if (!$mail->send()) {
             echo 'Erreur lors de l\'envoi du message : ' . $mail->ErrorInfo;
         } else {
-            echo 'E-mail envoyé avec succès!';
+           
+                $_SESSION['document'] .= $mail->Body . '' . date('H:i:s') . '.'; // Concaténation du contenu dans la variable de session si le message n'existe pas déjà
+            
         }
     }
 
     
     foreach ($materiels as $materiel) {
         $mail->Subject = 'Rappel de date d\'expiration';
-        $mail->Body = 'La date d\'expiration du matériel ' . $materiel['Refe'] . ' est proche ou dépassée.';
+        $mail->Body = 'La date d\'expiration du matériel ' . $materiel['Refe'] . ' est proche ou dépassée.' ;
         if (!$mail->send()) {
             echo 'Erreur lors de l\'envoi du message : ' . $mail->ErrorInfo;
         } else {
-            echo 'E-mail envoyé avec succès!';
+            
+                $_SESSION['matériel'] .= $mail->Body . ''. date('H:i:s') . '.'; // Concaténation du contenu dans la variable de session si le message n'existe pas déjà
+            
         }
     }
 

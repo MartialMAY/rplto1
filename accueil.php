@@ -4,10 +4,10 @@ if($_SESSION['user_email']==""){
 	header('location:index.php');
 
 }
-
+include_once('conn/connection.php');
 include ('classDocMat.php');
 
-include_once('conn/connection.php');
+
 include ('mail.php');
 $sql = "SELECT * FROM Materiel";
 
@@ -558,6 +558,186 @@ table th {
     vertical-align: middle;
 }
 
+.icons a{
+  text-decoration: none;
+  color: black;
+}
+
+.icons a:visited{
+  color: black;
+}
+
+.icons .box::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+  border-radius: 5px
+}
+
+.icons .box::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: #F5F5F5;
+  border-radius: 5px
+}
+
+.icons .box::-webkit-scrollbar-thumb
+{
+	background-color: black;
+	border: 2px solid black;
+  border-radius: 5px
+}
+
+
+
+
+
+.icons{
+  display: inline;
+  float: right
+}
+
+.icons .notification{
+  padding-top: 30px;
+  position: relative;
+  display: inline-block;
+}
+
+.icons .number{
+  height: 22px;
+  width:  22px;
+  background-color: #d63031;
+  border-radius: 20px;
+  color: white;
+  text-align: center;
+  position: absolute;
+  top: 23px;
+  left: 60px;
+  padding: 3px;
+  border-style: solid;
+  border-width: 2px;
+}
+
+.icons .number:empty {
+   display: none;
+}
+
+.icons .notBtn{
+  transition: 0.5s;
+  cursor: pointer
+}
+
+.icons .fas{
+  font-size: 25pt;
+  padding-bottom: 10px;
+  color: black;
+  margin-right: 40px;
+  margin-left: 40px;
+}
+
+.icons .box{
+  width: 400px;
+  height: 0px;
+  border-radius: 10px;
+  transition: 0.5s;
+  position: absolute;
+  overflow-y: scroll;
+  padding: 0px;
+  left: -300px;
+  margin-top: 5px;
+  background-color: #F4F4F4;
+  -webkit-box-shadow: 10px 10px 23px 0px rgba(0,0,0,0.2);
+  -moz-box-shadow: 10px 10px 23px 0px rgba(0,0,0,0.1);
+  box-shadow: 10px 10px 23px 0px rgba(0,0,0,0.1);
+  cursor: context-menu;
+}
+
+.icons .fas:hover {
+  color: #d63031;
+}
+
+.icons .notBtn:hover > .box{
+  height: 60vh
+}
+
+
+.icons .gry{
+  background-color: #F4F4F4;
+}
+
+.icons .top{
+  color: black;
+  padding: 10px
+}
+
+.icons .display{
+  position: relative;
+}
+
+.icons .cont{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: #F4F4F4;
+}
+
+.icons .cont:empty{
+  display: none;
+}
+
+.icons .stick{
+  text-align: center;  
+  display: block;
+  font-size: 50pt;
+  
+}
+
+.icons .stick:hover{
+  color: black;
+}
+
+.icons .cent{
+  text-align: center;
+  display: block;
+}
+
+ .sec{
+  padding: 25px 10px;
+  background-color: #F4F4F4;
+  transition: 0.5s;
+}
+
+.icons .profCont{
+  padding-left: 15px;
+}
+
+.icons .profile{
+  -webkit-clip-path: circle(50% at 50% 50%);
+  clip-path: circle(50% at 50% 50%);
+  width: 75px;
+  float: left;
+}
+
+.icons .txt{
+  vertical-align: top;
+  font-size: 1.25rem;
+  padding: 5px 10px 0px 115px;
+}
+
+.icons .sub{
+  font-size: 1rem;
+  color: grey;
+}
+
+.icons .new{
+  border-style: none none solid none;
+  border-color: red;
+}
+
+.icons .sec:hover{
+  background-color: #BFBFBF;
+}
 @keyframes fadeOut {
     0% {
         opacity: 1;
@@ -773,7 +953,53 @@ table th {
                          <a href="logout.php" tite="Deconnexion">  </a>    
                         
            </div>
-  
+           <div class = "icons">
+    <a href = "#"><i class="fas fa-archive"></i></a>
+    <div class = "notification">
+      <a href = "#">
+      <div class = "notBtn" href = "#">
+        <!--Number supports double digets and automaticly hides itself when there is nothing between divs -->
+        <div class = "number">2</div>
+        <i class="fas fa-bell"></i>
+          <div class = "box">
+            <div class = "display">
+              <div class = "nothing"> 
+                <i class="fas fa-child stick"></i> 
+                <div class = "cent">Looks Like your all caught up!</div>
+              </div>
+              <div class="cont">
+    <div>
+        <?php
+        if (isset($_SESSION['matériel'])) {
+            $materiel_messages = explode('<br>', $_SESSION['matériel']); // Séparer les messages par saut de ligne
+            foreach ($materiel_messages as $message) {
+                echo "<div class='sec new'>$message</div>"; // Afficher chaque message dans une balise <div>
+            }
+       
+        }
+        ?>
+   
+        <?php
+        if (isset($_SESSION['document'])) {
+            $document_messages = explode('<br>', $_SESSION['document']); // Séparer les messages par saut de ligne
+            foreach ($document_messages as $message) {
+                echo "<div class='sec new'>$message</div>"; // Afficher chaque message dans une balise <div>
+            }
+           
+        }
+        ?>
+    </div>
+</div>
+                 
+                 
+             </div>
+            </div>
+         </div>
+      </div>
+        </a>
+    </div>
+    <a href = "#"><i class="fas fa-edit"></i></a>
+    </div>
         <div class="message"> 
            
         <p> <span> <?php echo $_SESSION['user_email']; ?> </p>
@@ -936,10 +1162,10 @@ table th {
                             <span class="close" onclick="document.getElementById('confirmDeleteModal').style.display='none'">&times;</span>
                             <p>Êtes-vous sûr de vouloir supprimer cet élément ?</p>
                             <!-- Formulaire pour la suppression -->
-                            <form method="post" >
-                                <input type="hidden" name="id" value="ID_DE_L_ELEMENT_A_SUPPRIMER">
-                                <a href="supprimer_materiel.php?id=<?= $row['ID'] ?>">Confirmer la suppression</a>
+                            <form method="post"action="supprimer_materiel.php">
+                                <input type="hidden" name="id" value="<?php echo $row['ID']; ?>">
                                 
+                                <button type="submit" name="btn-del">Confirmer la modification</button>
                                 <button type="button" onclick="document.getElementById('confirmDeleteModal').style.display='none'">Annuler</button>
                             </form>
                         </div>
